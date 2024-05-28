@@ -37,7 +37,13 @@ local function updateBlips()
             }
         end
     end
-    TriggerClientEvent('police:client:UpdateBlips', -1, dutyPlayers)
+
+    for i=1, #players do 
+        local player = players[i]
+        if player.source then
+            TriggerClientEvent('police:client:UpdateBlips', player.source, dutyPlayers)
+        end
+    end
 end
 
 local function generateId(table)
